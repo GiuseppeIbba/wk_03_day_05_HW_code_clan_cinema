@@ -1,14 +1,19 @@
-require('pg')
+require_relative("../db/sql_runner")
 
-def self.run( sql, values = [])
-  begin
-    db = PG.connect({ dbname: 'code_clan_cinema', host: 'localhost'})
-    db.prepare("query", sql)
-    result = db.exec_prepared("query", values)
-  ensure
-    db.close if db != nil
-  end
-  return result
+class customer
+
+attr_reader id:
+attr_accessor name:, funds:
+
+def initialize (options)
+ @id = options["id"].to_i if options["id"]
+ @name = options["name"]
+ @funds = options["funds"]
 end
+
+
+
+
+
 
 end
