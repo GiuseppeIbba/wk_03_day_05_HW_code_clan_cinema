@@ -23,5 +23,10 @@ end
     SqlRunner.run(sql)
   end
 
+def update()
+  sql = "UPDATE films SET (title, price) VALUES ($1, $2) WHERE id = $3"
+  values = [@title, @price, @id]
+  SqlRunner.run(sql, values)
+end
 
 end
