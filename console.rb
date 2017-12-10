@@ -4,9 +4,9 @@ require_relative("models/ticket")
 
 require("pry-byebug")
 
-Ticket.delete_all
-Customer.delete_all
-Film.delete_all
+# Ticket.delete_all
+# Customer.delete_all
+# Film.delete_all
 
 #--------------------CUSTOMERS------------------------------|
 customer1 = Customer.new({"name" => "Adam", "funds" => 40})
@@ -17,6 +17,9 @@ customer2.save
 
 customer3 = Customer.new({"name" => "Cain", "funds" => 6})
 customer3.save
+
+customer4 = Customer.new({"name" => "Luigi", "funds" => 45})
+customer4.save
 
 
 #----------------------FILMS----------------------------|
@@ -29,6 +32,12 @@ film2.save
 film3 = Film.new({"title" => "Robin Hood, prince of strabics", "price" => 8.5})
 film3.save
 
+film4 = Film.new({"title" => "The Duck", "price" => 11})
+film4.save
+
+film5 = Film.new({"title" => "Robocop 4 the rusty cop", "price" => 9.9})
+film5.save
+
 #---------------------TICKETS------------------------------|
 ticket1 = Ticket.new({"customer_id" => customer1.id, "film_id" => film1.id})
 ticket1.save
@@ -39,10 +48,15 @@ ticket2.save
 ticket3 = Ticket.new({"customer_id" => customer3.id, "film_id" => film3.id})
 ticket3.save
 
+ticket4 = Ticket.new({"customer_id" => customer4.id, "film_id" => film4.id})
+ticket4.save
 
+ticket5 = Ticket.new({"customer_id" => customer4.id, "film_id" => film5.id})
+ticket5.save
 
 customer1.name = "Ginetto"
 film1.title = "Titanic 2 - No freezers "
+
 
 
 binding.pry
