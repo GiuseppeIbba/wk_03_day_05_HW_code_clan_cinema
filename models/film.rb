@@ -47,6 +47,17 @@ class Film
     return customer_hashes.map {|customer_hash| Customer.new(customer_hash)}
   end
 
+  def viewers()
+    sql = "SELECT  films.title, customers.name FROM customers
+    INNER JOIN tickets
+    ON tickets.customer_id = customers.id
+    INNER JOIN films
+    ON films.id = tickets.film_id WHERE tickets.film_id = $1"
+    values = [@id]
+    film_viewer_hashes = SqlRunner.run(sql, values)
+    result = film_viewer_hashes.map{|film_viewer_hash| film_viewer_hash}
+    return result
+  end
 
 
 

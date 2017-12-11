@@ -55,14 +55,8 @@ class Customer
     INNER JOIN customers
     ON customers.id = tickets.customer_id WHERE tickets.customer_id = $1"
     values = [@id]
-    film_hashes = SqlRunner.run(sql, values)
-    result = film_hashes.map{|film_hash| film_hash}
-    return result
-  end
-
-
-  def self.map_items(customer_hashes)
-    result = customer_hashes.map {|customer_hash| Customer.new(customer_hash)}
+    customer_film_hashes = SqlRunner.run(sql, values)
+    result = customer_film_hashes.map{|customer_film_hash| customer_film_hash}
     return result
   end
 
@@ -73,23 +67,15 @@ class Customer
   #   INNER JOIN customers
   #   ON customers.id = tickets.customer_id WHERE tickets.customer_id = $1"
   #   values = [@id]
-  #   film_hashes = SqlRunner.run(sql, values)
-  #   result =  film_hashes.map{|film_hash| Film.new(film_hash)}
+  #   customer_film_hashes = SqlRunner.run(sql, values)
+  #   result = customer_film_hashes.map{|customer_film_hash| Film.new(customer_film_hash)}
   #   return result
   # end
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+  def self.map_items(customer_hashes)
+    result = customer_hashes.map {|customer_hash| Customer.new(customer_hash)}
+    return result
+  end
 
 end
